@@ -1050,13 +1050,13 @@ hr {
     float: right;
 }
 .img1 {
-    background-image: url("assets/img/blog-placeholder.jpg");
+    background-image: url("../assets/img/blog-placeholder.jpg");
 }
 .img2 {
-    background-image: url("assets/img/blog-placeholder2.jpg");
+    background-image: url("../assets/img/blog-placeholder2.jpg");
 }
 .img3 {
-    background-image: url("assets/img/blog-placeholder3.jpg");
+    background-image: url("../assets/img/blog-placeholder3.jpg");
 }
 .stub {
   width: 90px;

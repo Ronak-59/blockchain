@@ -56,7 +56,9 @@ h6 {
     margin-top: 0;
     margin-bottom: 10px;
 }
-
+.content {
+    min-height: 75vh;
+}
 .content p {
     margin-bottom: 20px;
 }
@@ -1239,7 +1241,7 @@ hr {
 .resources-hero {
     background-color: #fff;
 }
-.resources-intro h1 {
+.subpage-intro h1 {
     color: #364169;
     font-size: 40px;
     margin-bottom: 32px;
@@ -1424,10 +1426,10 @@ h2.blogs-articles_head {
     .intro {
         width: 55%;
     }
-    .resources-intro {
+    .subpage-intro {
         width: 100%;
     }
-    .resources-intro p {
+    .subpage-intro p {
         width: 55%;
     }
     .featured-entries,

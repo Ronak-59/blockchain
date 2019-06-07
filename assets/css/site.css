@@ -1000,7 +1000,7 @@ hr {
     width: 55%;
     margin-left: 10rem;
 }
-.community-event-wrap h3 a {
+.community-event-wrap h3 a, .community-event-wrap h3 {
     font-size: 1.3rem;
     color: #ffbd3d;
     font-weight: 500;
@@ -1026,19 +1026,24 @@ hr {
     padding-left: 15px;
     opacity: .7;
 }
-.blog {
+.blog, .initiatives {
     padding-top: 3rem;
     padding-bottom: 3rem;
+}
+.blog {
     background-color: #f5f9fc;
 }
-.blog .wrap h1 {
+.initiatives {
+    background-color: #fff;
+}
+.blog .wrap h1, .initiatives .wrap h1 {
     font-weight: 700;
     font-size: 32px;
     margin-bottom: 40px;
     display: inline-block;
     color: #364169;
 }
-.blog .wrap h1 a {
+.blog .wrap h1 a, .initiatives .wrap h1 a {
     color: rgb(54, 65, 105);
 }
 .blog-img {
@@ -1072,8 +1077,12 @@ hr {
 .call-to-action__icon:active {
     border-bottom-width: 0;
 }
-.icon-external-link {
-    color: #0072CE;
+.external-link {
+    content: url("../img/external-link-alt.svg");
+    color: #fff;
+    height: 20px;
+    width:  20px;
+    padding-left: 6px;
 }
 .call-to-action__icon > [class^="icon"],
 .sidebar_list_item_head > [class^="icon"] {
@@ -1226,6 +1235,74 @@ hr {
     line-height: 1.5em;
 }
 
+/** RESOURCES PAGE **/
+.resources-hero {
+    background-color: #fff;
+}
+.resources-intro h1 {
+    color: #364169;
+    font-size: 40px;
+    margin-bottom: 32px;
+}
+.blogs-articles ul {
+    list-style: none;
+}
+.blogs-articles {
+    background-color: #f5f9fc;
+    padding: 3rem 0;
+}
+.blogs-articles h2 {
+    font-family: 'Work Sans', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    border-bottom: none;
+    letter-spacing: normal;
+    text-transform: none;
+    color: #6B78A4;
+}
+.blogs-articles a {
+    border-bottom: 1px dotted #1C1F2D;
+    color: #1C1F2D;
+    font-family: "Work Sans","Helvetica Neue","Helvetica",Arial,sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2.73px;
+    text-align: left;
+}
+.blogs-articles a:hover {
+    border-bottom: 1px solid #1C1F2D;
+}
+.blogs-articles p {
+    margin-top: 10px;
+}
+h2.blogs-articles_head {
+    color: #fff;
+    font-family: 'Work Sans', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    border-bottom: none;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 0;
+}
+.initiatives h2 {
+    border-bottom: none;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 600;
+    color: #6B78A4;
+    margin-bottom: 15px;
+}
+.initiatives li a:hover h2 {
+    opacity: .6;
+}
+.initiatives ul {
+    list-style: none;
+}
+.initiatives li {
+    width: 40%;
+}
 /* MEDIA QUERIES */
 @media screen and (min-width: 951px){ 
     .nav-container {
@@ -1345,6 +1422,12 @@ hr {
         vertical-align: top;
     }
     .intro {
+        width: 55%;
+    }
+    .resources-intro {
+        width: 100%;
+    }
+    .resources-intro p {
         width: 55%;
     }
     .featured-entries,

@@ -1109,6 +1109,7 @@ hr {
     font-family: "Work Sans","Helvetica Neue","Helvetica",Arial,sans-serif;
     font-weight: 800;
     line-height: 50px;
+    width: 70%;
 }
 .intro a,
 .content-header a {
@@ -1363,6 +1364,9 @@ h2.blogs-articles_head {
 
 /* SMALL TABLET (600px) */
 @media only screen and (min-width: 37.5em) {
+    .intro h1 {
+        width: 100%;
+    }
     .content-body {
         margin: 2em 5%;
     }

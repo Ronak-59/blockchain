@@ -674,6 +674,10 @@ del {
   -webkit-appearance: none;
 }
 
+.btn.download {
+  margin-top: 1em;
+}
+
 #tellUs {
   background-image: none;
   background-color: #f5f9fc;
@@ -1311,6 +1315,17 @@ h2.blogs-articles_head {
     .nav-container {
         max-width: 1200px;
         margin-left: 9rem;
+        margin-right: auto;
+        padding-right: 3rem;
+        padding-left: 3rem;
+        max-width: 960px;
+        
+}
+
+@media screen and (min-width: 951px){ 
+    .nav-container-table-page {
+        max-width: 1200px;
+        margin-left: 4rem;
         margin-right: auto;
         padding-right: 3rem;
         padding-left: 3rem;

@@ -132,9 +132,12 @@
                     '<h4>' + csvData[0] + '</h4>' +
                     '<p>' + csvData[4] + ', ' + csvData[5] + '</p>' +
                     '<p><strong>Organization Type:</strong> ' + csvData[6] + '</p>' +
-                    '<p><strong>Technologies:</strong> ' + csvData[7] + '</p>' +
-                    '<p><strong>Description:</strong> ' + csvData[9] + '</p>' +
-                    '</div>'+
+                    '<p><strong>Technologies:</strong> ' + csvData[7] + '</p>';
+
+                    if (csvData[9]) {
+                        content += '<p><strong>Description:</strong> ' + csvData[9] + '</p>';
+                    }
+                    content += '</div>'+
                     '<a href="#ex' + rowIdx +'" rel="modal:open">' + csvData[0] + '</a>';
                 return content;
             } else {

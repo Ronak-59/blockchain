@@ -4,11 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>U.S. Department of Education: Education Blockchain Initiative | List of Blockchain Efforts</title>
+    <title>U.S. Department of Education: Education Blockchain Initiative | Directory of Blockchain Efforts</title>
     <meta name="author" content="U.S. Department of Education" />
     <meta content="Display any CSV file as a searchable, filterable, pretty HTML table" />
      <meta name="description"
-        content="Efforts, Platforms, & Projects using Blockchain">
+        content="Directory of efforts, platforms, & projects using blockchain">
     <meta name="keywords" content="blockchain,DLT,distributed ledger technology,education,ed tech" />
     <meta name="theme-color" content="#ffffff">
 
@@ -22,6 +22,7 @@
     <script src="assets/js/modernizr.custom.js"></script>
     <link href="assets/datatables/DataTables-1.10.20/css/dataTables.bootstrap.css" rel="stylesheet">
      <link href="assets/datatables/datatables.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,9 +37,9 @@
             <section class="resources-hero">
                 <div class="nav-container-table-page">
                     <ul id="menu-main" class="hub-menu-main">
-                        <li id="homeButton"><a class="hub-icon" href="/blockchain"><i class="fa fa-home"
-                                    aria-hidden="true"></i></a></li>
+                        <li id="homeButton"><a class="hub-icon" href="/blockchain"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                         <li><span><a class="" href="/blockchain/about">About</a></span></li>
+                        <li><span><a class="" href="/blockchain/directory">Directory</a></span></li>
                         <li><span><a href="/blockchain/showcase">Showcase</a></span></li>
                         <li><span><a href="https://github.com/usedgov/blockchain/issues" target="blank">Portal</a></span></li>
                         <li><span><a href="/blockchain/#events">Events</a></span></li>
@@ -58,7 +59,7 @@
                 </div>
                 <div class="wrap">
                     <section class="intro subpage-intro">
-                      <h1>[DRAFT PAGE] Blockchain Efforts in Education</h1>
+                      <h1>[DRAFT PAGE] Directory of Blockchain Efforts in Education</h1>
                          <div id='table-container'></div>
                     </section>
                 </div>
@@ -110,16 +111,36 @@
     <script type="text/javascript" src="assets/datatables/datatables.min.js"></script>
     <script type="text/javascript" src="assets/datatables/DataTables-1.10.20/js/dataTables.bootstrap.js"></script>
     <script type="text/javascript" src="assets/js/csv_to_html_table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
 
     <script type="text/javascript">
-      function format_link(link){
-        if (link)
-        //  return "<a href='" + link + "' target='_blank'>" + link + "</a>";
-            return link;
-        else
-          return "";
-      }
+        function format_link(csvData){
+            if (csvData) {
+                console.log("csvData "+JSON.stringify(csvData));
+                return "<a href='" + csvData[1] + "' target='_blank'>" + csvData[1] + "</a>";
+            }
+            else {
+                return "";
+            }
+        }
+
+        function format_desc_hover(csvData, rowIdx){
+            if (csvData[6]) {
+                console.log("csvData "+JSON.stringify(csvData));
+                var content = '<div id="ex' + rowIdx +'" class="modal">'+
+                    '<h4>' + csvData[0] + '</h4>' +
+                    '<p>' + csvData[4] + ', ' + csvData[5] + '</p>' +
+                    '<p><strong>Organization Type:</strong> ' + csvData[6] + '</p>' +
+                    '<p><strong>Technologies:</strong> ' + csvData[7] + '</p>' +
+                    '<p><strong>Description:</strong> ' + csvData[9] + '</p>' +
+                    '</div>'+
+                    '<a href="#ex' + rowIdx +'" rel="modal:open">' + csvData[0] + '</a>';
+                return content;
+            } else {
+                return csvData[0];
+            }
+        }
 
       CsvToHtmlTable.init({
         csv_path: 'projects-list.csv',
@@ -127,9 +148,12 @@
         allow_download: true,
         csv_options: {separator: ',', delimiter: '"'},
         datatables_options: {"paging": false},
-        custom_formatting: [[4, format_link]]
+        custom_formatting: [[0, format_desc_hover,[4,5,6,7,9,10,11]],[1, format_link]],
+        custom_multi_cols: [[0, [4,5,6,7,9,10,11]]]
       });
+
     </script>
     </section>
+
   </body>
 </html>

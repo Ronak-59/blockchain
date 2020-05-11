@@ -13,8 +13,24 @@ CsvToHtmlTable = {
         $.each(custom_formatting, function (i, v) {
             var colIdx = v[0];
             var func = v[1];
+
             customTemplates[colIdx] = func;
         });
+
+
+
+        // Use this to for columns using mutliple csv columns
+        var custom_multi_cols = options.custom_multi_cols || [];
+        var customMultiCol = {};
+
+        $.each(custom_multi_cols, function (i, v) {
+            var appliedColIdx = v[0];
+            var contentArr = v[1];
+           customMultiCol[appliedColIdx] = { contentArr:contentArr};   
+           //customMultiCol[appliedColIdx].contentArr = contentArr;
+           //customMultiCol[appliedColIdx].func = func;
+         //   console.log("customMultiCol[appliedColIdx].contentArr: "+customMultiCol[appliedColIdx].contentArr);               
+        });  
 
         var $table = $("<table class='table table-striped table-condensed' id='" + el + "-table'></table>");
         var $containerElement = $("#" + el);
@@ -23,11 +39,27 @@ CsvToHtmlTable = {
         $.when($.get(csv_path)).then(
             function (data) {
                 var csvData = $.csv.toArrays(data, csv_options);
+                // view data
                 var $tableHead = $("<thead></thead>");
                 var csvHeaderRow = csvData[0];
                 var $tableHeadRow = $("<tr></tr>");
+                var colsArr = [];
+
+                // Set up columns and content display in columns
+                // Start with headers because we don't need headers for all of the csv content
                 for (var headerIdx = 0; headerIdx < csvHeaderRow.length; headerIdx++) {
-                    $tableHeadRow.append($("<th></th>").text(csvHeaderRow[headerIdx]));
+
+                    // If this col has multicol content
+                    if ( customMultiCol[headerIdx] ) {
+                        //Loop through the columns and set aside the cols and headers for the columns
+                        for (var headerIdx2 = 0; headerIdx2 < csvHeaderRow.length; headerIdx2++) {
+                            if (! customMultiCol[headerIdx].contentArr.includes(headerIdx2)) {
+                                colsArr.push(headerIdx2);
+                                $tableHeadRow.append($("<th></th>").text(csvHeaderRow[headerIdx2]));
+                            }
+                        }
+
+                    }                 
                 }
                 $tableHead.append($tableHeadRow);
 
@@ -36,17 +68,21 @@ CsvToHtmlTable = {
 
                 for (var rowIdx = 1; rowIdx < csvData.length; rowIdx++) {
                     var $tableBodyRow = $("<tr></tr>");
-                    for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
+                    $.each (colsArr, function(index, colIdx) {
                         var $tableBodyRowTd = $("<td></td>");
                         var cellTemplateFunc = customTemplates[colIdx];
+
                         if (cellTemplateFunc) {
-                            $tableBodyRowTd.html(cellTemplateFunc(csvData[rowIdx][colIdx]));
+                            console.log("ROW ID "+ rowIdx + "Col Id "+colIdx);
+                            $tableBodyRowTd.html(cellTemplateFunc(csvData[rowIdx],rowIdx));
                         } else {
                             $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
                         }
                         $tableBodyRow.append($tableBodyRowTd);
                         $tableBody.append($tableBodyRow);
-                    }
+
+                        //Add description row
+                    });
                 }
                 $table.append($tableBody);
 

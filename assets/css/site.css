@@ -404,7 +404,7 @@ dt {
     font-family: "Chivo","Helvetica Neue","Helvetica",Arial,sans-serif;
     font-weight: 300;
     line-height: 46px;
-    z-index: 200;
+    /*z-index: 200;*/
 }
 
 .hub-menu-main {
@@ -431,7 +431,7 @@ dt {
     border-bottom: none;
 }
 
-.hub-menu-main a:hover,
+.hub-menu-main a:hover, 
 .hub-menu li.hub-search-item:hover,
 .hub-menu li.hub-search-item:hover a {
     background-color: rgb(54, 65, 105);

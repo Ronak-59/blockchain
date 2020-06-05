@@ -404,7 +404,7 @@ dt {
     font-family: "Chivo","Helvetica Neue","Helvetica",Arial,sans-serif;
     font-weight: 300;
     line-height: 46px;
-    z-index: 200;
+    /*z-index: 200;*/
 }
 
 .hub-menu-main {
@@ -431,7 +431,7 @@ dt {
     border-bottom: none;
 }
 
-.hub-menu-main a:hover,
+.hub-menu-main a:hover, 
 .hub-menu li.hub-search-item:hover,
 .hub-menu li.hub-search-item:hover a {
     background-color: rgb(54, 65, 105);
@@ -672,6 +672,10 @@ del {
   -webkit-transition: background-color 0.1s;
   transition: background-color 0.1s;
   -webkit-appearance: none;
+}
+
+.btn.download {
+  margin-top: 1em;
 }
 
 #tellUs {
@@ -1311,6 +1315,17 @@ h2.blogs-articles_head {
     .nav-container {
         max-width: 1200px;
         margin-left: 9rem;
+        margin-right: auto;
+        padding-right: 3rem;
+        padding-left: 3rem;
+        max-width: 960px;
+        
+}
+
+@media screen and (min-width: 951px){ 
+    .nav-container-table-page {
+        max-width: 1200px;
+        margin-left: 4rem;
         margin-right: auto;
         padding-right: 3rem;
         padding-left: 3rem;
